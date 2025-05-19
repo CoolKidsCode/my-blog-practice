@@ -30,4 +30,24 @@ footer {
   font-family: Arial, sans-serif;
 }
 
+footer {
+  padding: 20px 0;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #555;
+}
+
+.footer-links a:hover {
+  color: #000;
+}
+
+
 
