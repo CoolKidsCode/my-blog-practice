@@ -1,4 +1,4 @@
 pytest
 
 #old version of a vulnerable package
-flask==0.12  # vulnerable
+flask==2.2.5  # vulnerable
