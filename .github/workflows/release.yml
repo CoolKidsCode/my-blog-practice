@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - pyproject.toml
+
+jobs:
+  tag-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get version from pyproject.toml
+        id: get_version
+        run: |
+          VERSION=$(grep "^version" pyproject.toml | cut -d '"' -f2)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "::set-output name=tag::$VERSION"
+
+      - name: Create GitHub Tag
+        uses: rickstaa/action-create-tag@v1
+        with:
+          tag: "v${{ steps.get_version.outputs.tag }}"
+          message: "Release v${{ steps.get_version.outputs.tag }}"
